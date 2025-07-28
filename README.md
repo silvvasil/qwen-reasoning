@@ -14,3 +14,9 @@ uv pip install torch-sparse -f https://data.pyg.org/whl/torch-2.6.0+cpu.html
 Работало на Intel Ice Lake with NVIDIA® Tesla® T4	и Intel Ice Lake with T4i
 
 ## Step 1
+
+```
+python3 main.py
+```
+
+Функции для наград взяты из [Open R1](https://github.com/huggingface/open-r1)
