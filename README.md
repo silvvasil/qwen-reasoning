@@ -19,4 +19,6 @@ uv pip install torch-sparse -f https://data.pyg.org/whl/torch-2.6.0+cpu.html
 python3 main.py
 ```
 
-Функции для наград взяты из [Open R1](https://github.com/huggingface/open-r1)
+Функции для наград были вдохновлены [Open R1](https://github.com/huggingface/open-r1).
+
+
