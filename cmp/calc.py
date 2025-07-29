@@ -15,9 +15,10 @@ dataset = load_dataset("gsm8k", "main", split="test")
 
 # --------------------
 if args.mode == "tuned":
-    filename = 'original_model_responses.json'
+    filename = 'cmp/tuned_model_responses.json'
 else:
-    filename = 'tuned_model_responses.json'
+    filename = 'cmp/original_model_responses.json'
+
 
 with open(filename, "r", encoding="utf-8") as f:
     qa_pairs = json.load(f)

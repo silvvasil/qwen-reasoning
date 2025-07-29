@@ -76,21 +76,28 @@ prompts = []
 
 if args.mode == "tuned":
     lora = model.load_lora("grpo_saved_lora")
-    filename = 'original_model_responses.json'
+    filename = 'cmp/tuned_model_responses.json'
 else:
-    filename = 'tuned_model_responses.json'
+    filename = 'cmp/original_model_responses.json'
     lora = None
 
-for example in tqdm(dataset, desc="Generating"):
-    prompt = build_prompt(example["question"])
-    result = model.fast_generate(
-        prompt,
+batch_size = 32
+for i in range(0, len(dataset), batch_size):
+    batch = dataset[i:i + batch_size]
+    batch_prompts = [
+        build_prompt(example) for example in batch["question"]
+    ]
+    results = model.fast_generate(
+        batch_prompts,
         sampling_params=sampling_params,
         lora_request=lora,
     )
-    response = result[0].outputs[0].text
-    responses.append(response)
-    prompts.append(prompt)
+    batch_responses = [ 
+        result.outputs[0].text
+        for result in results
+    ]
+    responses += batch_responses
+    prompts += batch_prompts 
 
 # --------------------
 qa_pairs = [{"question": q, "answer": a} for q, a in zip(prompts, responses)]
