@@ -4,6 +4,7 @@
 
 ```
 uv venv --python=3.12.3
+source .venv/bin/activate
 uv pip install -r requirements.txt
 uv pip install torch -f https://data.pyg.org/whl/torch-2.6.0+cpu.html
 uv pip install torch-geometric -f https://data.pyg.org/whl/torch-2.6.0+cpu.html
