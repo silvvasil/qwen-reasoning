@@ -104,7 +104,7 @@ python3 main.py
 </p>
 
 <p align="center">
-  <img src="./media/full_reward.png.png" alt="Correctness" width="60%"/>
+  <img src="./media/full_reward.png" alt="Full reward" width="60%"/>
 </p>
 
 Ура победа, товарищи! Конечно, в сравнении с baseline того же размера, выглядит уже не так привлекательно, но рост всё равно есть, и это не полный запуск.
