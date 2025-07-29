@@ -19,7 +19,7 @@ args = parser.parse_args()
 
 # --------------------
 model, tokenizer = FastLanguageModel.from_pretrained(
-    model_name="Qwen/Qwen2.5-0.5B-Instruct",
+    model_name="Qwen/Qwen2.5-3B-Instruct",
     max_seq_length=1024,
     load_in_4bit=True,
     fast_inference=True,
