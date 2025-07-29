@@ -49,3 +49,11 @@ python3 cmp/calc.py --mode tuned
 
 ## Length reward (working HARD)
 Основное изменение третей попытки от предыдущих: функциях `grpo_length_efficiency_reward`
+
+<pre>
+len_reward(i) = {
+  λ                                              if r(x, y<sub>i</sub>, y<sub>*</sub>) = 1
+  min(0, λ)                                      if r(x, y<sub>i</sub>, y<sub>*</sub>) = 0
+}
+where λ = 0.5 - (len(i) − min_len) / (max_len − min_len)
+</pre>
