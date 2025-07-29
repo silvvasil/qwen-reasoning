@@ -11,17 +11,19 @@ uv pip install torch-scatter -f https://data.pyg.org/whl/torch-2.6.0+cpu.html
 uv pip install torch-sparse -f https://data.pyg.org/whl/torch-2.6.0+cpu.html
 ```
 
-Работало на Intel Ice Lake with NVIDIA® Tesla® T4	и Intel Ice Lake with T4i
+<!-- Работало на Intel Ice Lake with NVIDIA® Tesla® T4	и Intel Ice Lake with T4i -->
 
-## Step 1
-
+## Eval
 ```
-python3 main.py
+python3 cmp/gen.py --mode base
+python3 cmp/calc.py --mode base
+python3 cmp/gen.py --mode tuned
+python3 cmp/calc.py --mode tuned
 ```
 
-Функции для наград были вдохновлены [Open R1](https://github.com/huggingface/open-r1).
+## Attempt #1
 
-До этого я использовал функции примера в документации unsloth. И там была следующая проблема: не было reward функции "хвалящей" за длину reasoning. Поэтому ответы модели свелись к 
+Вначале я использовал функции примера в документации unsloth. И там была следующая проблема: не было reward функции "хвалящей" за длину reasoning. Поэтому ответы модели свелись к 
 ```
 <reasoning>
 #2
@@ -32,18 +34,16 @@ python3 main.py
 ```
 И `#1` и `#2` были близки к случайным числам. Точно ответов модели сильно упала: с 300 до 80, но при этом, модель идеально научилась соблюдать требуемый формат.
 
-## Сравнение моделей
+## Attempt #2
 
-Сравниваем модели.
+Потом, функции для наград были вдохновлены [Open R1](https://github.com/huggingface/open-r1).
+И снова фиаско: функции оказались слишком "сложными" для такой маленькой модели.
 
-```
-python3 cmp/gen.py --mode base
-python3 cmp/calc.py --mode base
-python3 cmp/gen.py --mode tuned
-python3 cmp/calc.py --mode tuned
-```
-
+## Summary
 | | Before (0.5b)  | Open R1 rewards | Qwen Colab rewards | 
 | ------------- | ------------- | ------------- | ------------- |
-| Correct Format | 4/1319  | ?/l319  | 1319/1319 |
-| Correct Answer | 301/1319  | ?/1319  | 81/1319 |
+| Correct Format | 4/1319  | 2/1319  | 1319/1319 |
+| Correct Answer | 301/1319  | 31/1319  | 81/1319 |
+
+Тут можно сделать промежуточные выводы: нам не нужны сложные `reward`-функции. Лучше возьмём модель побольше (`3b`), и добавим к `reward`-ам еще "похвалу" за длину, взятую из `Open R1`, а там она взята из [Kimi 1.5](https://huggingface.co/papers/2501.12599). 
+
