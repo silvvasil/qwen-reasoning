@@ -25,6 +25,12 @@ python3 main.py
 ## Step 1.1
 
 Сравниваем модели.
+
+```
+python3 cmp/gen.py
+python3 cmp/calc.py
+```
+
 | | Before (0.5b)  | After (tuned) |
 | ------------- | ------------- | ------------- |
 | Correct Format | 4/1319  | ?/l319  |
