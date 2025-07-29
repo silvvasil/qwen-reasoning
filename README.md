@@ -39,6 +39,19 @@ python3 cmp/calc.py --mode tuned
 Потом, функции для наград были вдохновлены [Open R1](https://github.com/huggingface/open-r1).
 И снова фиаско: функции оказались слишком "сложными" для такой маленькой модели.
 
+В результате, мы даже не получили соблюдение формата: в итоге среднее количество используемых тегов было 2 из 4х.
+С правильностью ответов тоже всё было плохо.
+<p align="center">
+  <img src="./media/grpo_correctness_reward-2.png" alt="Correctness" width="45%"/>
+  <img src="./media/grpo_tag_count_reward-2.png" alt="Format" width="45%"/>
+</p>
+
+Косвенные метрики забрали вес у более значимых: `correctness` и `format`. Например, в течении работы, улучшалось значение метрики `grpo_reasoning_steps_reward`. То есть по косвенным метрикам, модель училась "лучше рассуждать", но это было во вред правильности ответов.
+<p align="center">
+  <img src="./media/grpo_reasoning_steps_reward-2.png" alt="Correctness" width="60%"/>
+</p>
+
+
 ## Summary
 | | Before (0.5b)  | Open R1 rewards | Qwen Colab rewards | 
 | ------------- | ------------- | ------------- | ------------- |
