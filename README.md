@@ -27,8 +27,10 @@ python3 main.py
 Сравниваем модели.
 
 ```
-python3 cmp/gen.py
-python3 cmp/calc.py
+python3 cmp/gen.py --mode base
+python3 cmp/calc.py --mode base
+python3 cmp/gen.py --mode tuned
+python3 cmp/calc.py --mode tuned
 ```
 
 | | Before (0.5b)  | After (tuned) |

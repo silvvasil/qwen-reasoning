@@ -76,7 +76,7 @@ prompts = []
 
 if args.mode == "tuned":
     lora = model.load_lora("grpo_saved_lora")
-    filename = 'original_responses.json'
+    filename = 'original_model_responses.json'
 else:
     filename = 'tuned_model_responses.json'
     lora = None

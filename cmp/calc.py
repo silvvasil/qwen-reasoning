@@ -15,7 +15,7 @@ dataset = load_dataset("gsm8k", "main", split="test")
 
 # --------------------
 if args.mode == "tuned":
-    filename = 'original_responses.json'
+    filename = 'original_model_responses.json'
 else:
     filename = 'tuned_model_responses.json'
 
