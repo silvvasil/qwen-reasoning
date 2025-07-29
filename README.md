@@ -47,3 +47,5 @@ python3 cmp/calc.py --mode tuned
 
 Тут можно сделать промежуточные выводы: нам не нужны сложные `reward`-функции. Лучше возьмём модель побольше (`3b`), и добавим к `reward`-ам еще "похвалу" за длину, взятую из `Open R1`, а там она взята из [Kimi 1.5](https://huggingface.co/papers/2501.12599). 
 
+## Length reward (working HARD)
+Основное изменение третей попытки от предыдущих: функциях `grpo_length_efficiency_reward`
